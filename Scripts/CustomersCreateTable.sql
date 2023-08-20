@@ -1,0 +1,6 @@
+CREATE TABLE Customers (
+    UUID UNIQUEIDENTIFIER PRIMARY KEY,
+    Name NVARCHAR(255),
+    Surname NVARCHAR(255),
+    PhoneNumber NVARCHAR(20)
+);

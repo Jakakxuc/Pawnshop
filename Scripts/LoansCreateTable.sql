@@ -1,0 +1,9 @@
+CREATE TABLE Loans (
+    UUID UNIQUEIDENTIFIER PRIMARY KEY,
+	DocumentUUID UNIQUEIDENTIFIER NOT NULL,
+    LoanAmount DECIMAL(18, 2),
+    InterestRate DECIMAL(5, 2),
+    LoanDate DATETIME,
+    Status INT,
+	CONSTRAINT FK_Loans_Documents FOREIGN KEY (DocumentUUID) REFERENCES Documents(UUID)
+);
