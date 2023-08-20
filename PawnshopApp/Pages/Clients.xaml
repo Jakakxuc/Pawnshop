@@ -1,0 +1,52 @@
+﻿<Page x:Class="PawnshopApp.Pages.Clients"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:viewodels ="clr-namespace:PawnshopApp.ViewModel"
+      xmlns:local="clr-namespace:PawnshopApp.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="Clients">
+
+    <Page.DataContext>
+        <viewodels:ClientsViewModel/>
+    </Page.DataContext>
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <ListBox x:Name="ClientsListBox" Grid.Column="0" Margin="10" Width="200"
+         ItemsSource="{Binding Clients}"
+         SelectionChanged="ClientsListBox_SelectionChanged">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding FullName}" VerticalAlignment="Center" Padding="5"/>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+
+        <Border Grid.Column="1" Margin="10" BorderBrush="LightGray" BorderThickness="1">
+            <StackPanel Margin="10">
+                <TextBlock Text="Детали" FontWeight="Bold" FontSize="16"/>
+
+                <StackPanel Margin="0 10">
+                    <TextBlock Text="Фамилия и имя:" FontWeight="Bold"/>
+                    <TextBlock Text="{Binding SelectedClient.FullName}" Margin="0 5"/>
+                </StackPanel>
+
+                <StackPanel Margin="0 10">
+                    <TextBlock Text="Номер телефона:" FontWeight="Bold"/>
+                    <TextBlock Text="{Binding SelectedClient.PhoneNumber}" Margin="0 5"/>
+                </StackPanel>
+
+            </StackPanel>
+        </Border>
+
+        <Button Content="Добавить клиента" HorizontalAlignment="Center" VerticalAlignment="Bottom"
+                Command="{Binding OpenAddCustomerFormCommand}"/>
+    </Grid>
+</Page>

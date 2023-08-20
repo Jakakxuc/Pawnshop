@@ -1,0 +1,5 @@
+{
+  "ConnectionStrings": {
+    "MSSQL": "Data Source=LAPTOP-JI20M6GQ;Initial Catalog=Pawnshop;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=True;ApplicationIntent=ReadWrite;MultiSubnetFailover=False;"
+  }
+}

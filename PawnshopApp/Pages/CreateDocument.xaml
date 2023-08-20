@@ -1,0 +1,59 @@
+﻿<Window x:Class="PawnshopApp.Pages.CreateDocument"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:viewodels ="clr-namespace:PawnshopApp.ViewModel"
+        xmlns:local="clr-namespace:PawnshopApp.Pages"
+        mc:Ignorable="d"
+        Title="CreateDocument" Height="450" Width="800">
+
+    <Window.DataContext>
+        <viewodels:CreateDocumentViewModel/>
+    </Window.DataContext>
+    
+    <Grid>
+        <StackPanel Margin="20">
+            <TextBlock Text="Select Customer:" FontWeight="Bold"/>
+            <ComboBox x:Name="CustomerComboBox"
+                      ItemsSource="{Binding Customers}"
+                      DisplayMemberPath="FullName"
+                      SelectedItem="{Binding SelectedCustomer}"
+                      Margin="0 5"/>
+
+            <StackPanel Margin="0 1">
+                <TextBlock Text="Название:" FontWeight="Bold"/>
+                <TextBox x:Name="DocumentNameTextBox"
+               Text="{Binding DocumentName}"
+               Margin="0 1"/>
+            </StackPanel>
+
+            <StackPanel Margin="0 1">
+                <TextBlock Text="Комментарий:" FontWeight="Bold"/>
+                <TextBox x:Name="DocumentCommentTextBox"
+               Text="{Binding DocumentName}"
+               Margin="0 1"/>
+            </StackPanel>
+
+            <TextBlock Text="Последняя дата выкупа:" FontWeight="Bold" Margin="0 5"/>
+            <DatePicker x:Name="LoanDatePicker" SelectedDate="{Binding LoanExpiryDate}" Margin="0 1"/>
+
+            <TextBlock Text="Залоговые вещи:" FontWeight="Bold" Margin="0 1"/>
+            <ListView x:Name="PawnedItemsList" ItemsSource="{Binding PawnedItems}">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="Описание" DisplayMemberBinding="{Binding Description}"/>
+                        <GridViewColumn Header="Оценочная стоимость" DisplayMemberBinding="{Binding EstimatedValue}"/>
+                        <GridViewColumn Header="Дата приёмки" DisplayMemberBinding="{Binding PawnDate}"/>
+                        <GridViewColumn Header="Дата просрочки" DisplayMemberBinding="{Binding ExpiryDate}"/>
+                        <GridViewColumn Header="Статус" DisplayMemberBinding="{Binding Sold}"/>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+            <Button Content="Добавить вещь" HorizontalAlignment="Center" VerticalAlignment="Bottom"
+                Command="{Binding OpenAddPawnedItemFormCommand}"/>
+
+            <Button Content="Создать документ" Click ="CreateDocument_Click" HorizontalAlignment="Center" Margin="0 20"/>
+        </StackPanel>
+    </Grid>
+</Window>

@@ -1,0 +1,21 @@
+﻿<Window x:Class="PawnshopApp.Pages.AddPawnedItem"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PawnshopApp.Pages"
+        mc:Ignorable="d"
+        Title="AddPawnedItem" Height="450" Width="800">
+    <Grid>
+        <StackPanel Margin="20">
+            <TextBlock Text="Описание:" FontWeight="Bold"/>
+            <TextBox x:Name="DescriptionTextBox" Text="{Binding Description}" Margin="0 1"/>
+
+            <TextBlock Text="Оценочная стоимость:" FontWeight="Bold" Margin="0 5"/>
+            <TextBox x:Name="EstimatedValueTextBox" Text="{Binding EstimatedValue}" Margin="0 1"/>
+
+            <Button Content="Добавить вещь" HorizontalAlignment="Center" VerticalAlignment="Bottom"
+                    Click="AddPawnedItem_Click" Margin="0 20"/>
+        </StackPanel>
+    </Grid>
+</Window>

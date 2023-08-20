@@ -1,0 +1,34 @@
+﻿<Window x:Class="PawnshopApp.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:viewodels ="clr-namespace:PawnshopApp.ViewModel"
+        xmlns:local="clr-namespace:PawnshopApp"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="900">
+    
+    <Window.DataContext>
+        <viewodels:MainWindowViewModel/>
+    </Window.DataContext>
+    
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="120"/>
+            <ColumnDefinition Width="700"/>
+        </Grid.ColumnDefinitions>
+
+        <StackPanel>
+            <Button Command="{Binding bClientsPage_Click}" Content="Клиенты"/>
+            <Button Command="{Binding bInformationPage_Click}" Content="Информация"/>
+            <Button Command="{Binding bLoansPage_Click}" Content="Выданные займы"/>
+            <Button Command="{Binding bDocumentsPage_Click}" Content="Документы"/>
+            <Button Command="{Binding bPawnedItemsPage_Click}" Content="Залоговые предметы"/>
+            <Button Command="{Binding bAuthPage_Click}" Content="Авторизация"/>
+        </StackPanel>
+        <Frame 
+            Grid.Column="1"
+            Content="{Binding CurrentPage}"
+            NavigationUIVisibility="Hidden"/>
+    </Grid>
+</Window>
